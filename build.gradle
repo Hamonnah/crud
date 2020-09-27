@@ -18,6 +18,11 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+
 }
