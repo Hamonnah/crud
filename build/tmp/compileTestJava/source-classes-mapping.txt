@@ -1,2 +1,0 @@
-com/crud/tasks/TasksApplicationTests.java
- com.crud.tasks.TasksApplicationTests
