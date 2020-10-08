@@ -1,0 +1,14 @@
+body {
+   background-color: grey;
+}
+
+h1 {
+   text-align: center;
+   color: #8B0000;
+   font-size: 50pt;
+}
+
+p {
+	text-align: center;
+	font-size: 24pt;
+}
