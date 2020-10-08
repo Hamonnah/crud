@@ -1,23 +1,33 @@
 plugins {
-	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
-	id 'war'
 }
-group = 'com.crud.tasks'
+
+group = 'com.crud'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
 repositories {
 	mavenCentral()
 }
+
 dependencies {
-	compile('org.projectlombok:lombok')
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	annotationProcessor('org.projectlombok:lombok')
+	compileOnly('org.projectlombok:lombok')
+
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.projectlombok:lombok')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('mysql:mysql-connector-java')
-	annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
 
-	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+test {
+	useJUnitPlatform()
 }
