@@ -42,12 +42,10 @@ class TrelloClientTest {
     private TrelloConfig trelloConfig;
 
     @Test
-    void sholuldFetchTrelloBoards() throws URISyntaxException {
+    void sholuldFetchTrelloBoards() {
         //Given
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
         trelloBoards[0] = new TrelloBoardDto("test_id", "test_board", new ArrayList<>());
-
-        //URI uri = new URI("http://test.com/members/jozefina12/boards?key=test&token=test&fields=name,id&lists=all");
 
         when(restTemplate.getForObject(any(), eq(TrelloBoardDto[].class))).thenReturn(trelloBoards);
 
@@ -73,11 +71,7 @@ class TrelloClientTest {
 
         URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
 
-        CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
-                "1",
-                "Test task",
-                "http://test.com"
-        );
+        CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard("1", "Test task", "http://test.com");
 
         when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
 
