@@ -36,7 +36,7 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        if (mail.getToCc() != "" | mail.getToCc() != null) {
+        if (!mail.getToCc().equals("") && mail.getToCc() != null) {
             mailMessage.setCc(mail.getToCc());
             LOGGER.info("Copy email has been sent");
         }
