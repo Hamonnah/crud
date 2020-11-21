@@ -22,15 +22,18 @@ public class EmailScheduler {
     @Autowired
     private AdminConfig adminConfig;
 
-    //@Scheduled(cron = "0 0 10 * * *")
+    private String generateNotificationBody(Long tasksCount) {
+        if(tasksCount == 1) {
+            return "Currently in database you got: " + tasksCount + " task";
+        } else {
+            return "Currently in database you got: " + tasksCount + " tasks";
+        }
+    }
+
     @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
-        long size = taskRepository.count();
-        if(size == 1) {
-            simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, "Currently in database you got: " + size + " task"));
-        } else {
-            simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, "Currently in database you got: " + size + " tasks"));
-        }
+        long tasksCount = taskRepository.count();
+            simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, generateNotificationBody(tasksCount)));
     }
 
 }
