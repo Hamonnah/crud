@@ -19,6 +19,6 @@ public class TrelloListDto {
     private String name;
 
     @JsonProperty("closed")
-    private String closed;
+    private boolean isClosed;
 
 }
