@@ -30,7 +30,7 @@ public class EmailScheduler {
         }
     }
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 1000000)
     public void sendInformationEmail() {
         long tasksCount = taskRepository.count();
             simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, generateNotificationBody(tasksCount)));
