@@ -47,8 +47,4 @@ public class TrelloMapper {
         return new TrelloCardDto(trelloCard.getName(),trelloCard.getDescription(),trelloCard.getPos(),trelloCard.getListId());
     }
 
-    public TrelloBoard mapToBoard(final TrelloBoardDto trelloBoardDto) {
-        return new TrelloBoard(trelloBoardDto.getId(), trelloBoardDto.getName(), mapToList(trelloBoardDto.getLists()));
-    }
-
 }
