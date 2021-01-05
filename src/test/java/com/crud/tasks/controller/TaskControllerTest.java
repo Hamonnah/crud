@@ -75,7 +75,7 @@ public class TaskControllerTest {
         when(service.getTask(1L)).thenReturn(Optional.of(task));
 
         //When & Then
-        mockMvc.perform(get("/v1/task/getTask?taskId=1")
+        mockMvc.perform(get("/v1/task/getTask")
                 .contentType(MediaType.APPLICATION_JSON)
                 .param("taskId", "1"))
                 .andExpect(status().isOk())
@@ -128,8 +128,8 @@ public class TaskControllerTest {
     public void shouldCreateTask() throws Exception {
 
         //Given
-        Task task = new Task(1L, "Test", "Test content");
-        TaskDto taskDto = new TaskDto(1L, "Test", "Test content");
+        Task task = new Task("Test", "Test content");
+        TaskDto taskDto = new TaskDto("Test", "Test content");
 
         when(service.saveTask(ArgumentMatchers.any(Task.class))).thenReturn(task);
         when(taskMapper.mapToTask(ArgumentMatchers.any(TaskDto.class))).thenReturn(task);
